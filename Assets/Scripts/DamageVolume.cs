@@ -43,6 +43,11 @@ public class DamageVolume : MonoBehaviour
             {
                 manager.TakeDamage(damageToDeal);
                 yield return new WaitForSeconds(damageTimer);
+
+                if(GameManager.playerState != GameManager.PlayerState.Playing)
+                {
+                    isActive = false;
+                }
             }
         }
         

@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     {
         playerState = PlayerState.Lose;
         loseMenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 0;
     }
 
     public void ResetGame()
