@@ -26,7 +26,10 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySong(AudioClip clip)
     {
-        _audioSource.clip = clip;
-        _audioSource.Play();
+        if(_audioSource.clip != clip)
+        {
+            _audioSource.clip = clip;
+            _audioSource.Play();
+        }
     }
 }
