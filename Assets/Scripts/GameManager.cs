@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     private int _playerHealth = 100;
     private int _currentPlayerHealth = 100;
     [SerializeField] Image _playerHealthText;
+    [SerializeField] AudioSource playerHurt;
+    [SerializeField] AudioSource playerLose;
 
     [SerializeField] GameObject loseMenu;
 
@@ -27,10 +29,25 @@ public class GameManager : MonoBehaviour
         _currentPlayerHealth -= damageDelt;
         float percent = (float)_currentPlayerHealth / (float)_playerHealth;
         _playerHealthText.transform.localScale = new Vector3(percent, 1f, 1f);
+        playerHurt.Play();
         if(_currentPlayerHealth <= 0)
         {
+            playerLose.Play();
             LoseGame();
         }
+    }
+
+    public bool CheckMaxHealth()
+    {
+        if(_currentPlayerHealth == _playerHealth)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
     }
 
     private void LoseGame()
